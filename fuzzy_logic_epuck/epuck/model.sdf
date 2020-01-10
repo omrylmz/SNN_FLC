@@ -1,0 +1,396 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="epuck">
+    <link name="base_link">
+    <visual name="top_base_visual">
+        <geometry>
+          <mesh>
+            <uri>model://epuck/meshes/top_base.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/BlackTransparent</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="body_visual">
+        <geometry>
+          <mesh>
+            <uri>model://epuck/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="top_cover_visual">
+        <geometry>
+          <mesh>
+            <uri>model://epuck/meshes/top_cover.dae</uri>
+          </mesh>
+        </geometry>
+         <material>     
+          <ambient> 0.004 0.127 0.078 0.7</ambient>
+          <diffuse> 0.004 0.127 0.078 0.7</diffuse>
+          <specular>0.004 0.127 0.078 0.7</specular>
+          <emissive>0.004 0.127 0.078 0.7</emissive>
+        </material>
+       </visual>
+      <visual name="top_ring_visual">
+        <geometry>
+          <mesh>
+            <uri>model://epuck/meshes/top_ring.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/GreyTransparent</name> 
+          </script>
+        </material>
+      </visual>
+      <pose >0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose >0 0 0.015 0 -0 0</pose>
+        <mass>5.063525</mass>
+         <inertia>
+          <ixx>8.74869e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.64333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>9.78585e-05</izz>
+        </inertia>
+      </inertial>
+       <collision name="collision">
+       <pose>0 0 0.025 0 0 0</pose>
+        <geometry>
+           <cylinder>
+            <radius>0.037</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <gravity>1</gravity>
+      <velocity_decay/>
+
+     <sensor type="ray" name="distanceSensor0">
+          <visualize>true</visualize>
+          <pose>0.00918 0.0296  0.033 0 0 1.27</pose>
+          <update_rate>50</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>distanceSensor0</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin>
+        </sensor>
+
+        <sensor type="ray" name="distanceSensor1">
+          <visualize>true</visualize>
+          <pose>0.0216 0.022  0.033 0 0 0.77</pose>
+          <update_rate>20</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+
+         <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>distanceSensor1</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin>
+        </sensor>
+
+         <sensor type="ray" name="distanceSensor2">
+          <visualize>true</visualize>
+          <pose>0.031 0 0.033 0 0 0</pose>
+          <update_rate>5</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>             
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>distanceSensor2</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin>
+        </sensor>
+
+        <sensor type="ray" name="distanceSensor5">
+          <visualize>true</visualize>
+          <pose>-0.031 0 0.033 0 0 3.14159</pose>
+          <update_rate>5</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>
+             
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>2</updateRate>
+            <topicName>distanceSensor5</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin>
+        </sensor>
+
+        <sensor type="ray" name="distanceSensor6">
+          <visualize>true</visualize>
+          <pose>-0.0222 0.0217 0.033 0 0 2.37</pose>
+          <update_rate>5</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>distanceSensor6</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin>
+        </sensor>
+
+        <sensor type="ray" name="distanceSensor7">
+          <visualize>true</visualize>
+          <pose>-0.00914 0.0296 0.033 0 0 1.87</pose>
+          <update_rate>5</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>2</samples>
+                <resolution>1.0</resolution>
+                <min_angle>-0.1</min_angle>
+                <max_angle>0.1</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>0.5</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>distanceSensor7</topicName>
+            <frameName>sonar_link</frameName>
+            <fov>0.5</fov>
+            <radiation>ultrasound</radiation>
+          </plugin> 
+        </sensor>
+    </link>
+
+    <link name="left_wheel">
+      <pose>0.0278 0 0.02 0 -0 0</pose>
+      <inertial>
+        <pose>-0.0005 -0 0 0 -0 0</pose>
+        <mass>0.0040981</mass>
+      <inertia>
+          <ixx>8.267e-07</ixx>
+          <ixy>-9.8761e-23</ixy>
+          <ixz>-8.6429e-13</ixz>
+          <iyy>4.304e-07</iyy>
+          <iyz>-2.3376e-22</iyz>
+          <izz>4.304e-07</izz>
+        </inertia>
+      </inertial>
+   <collision name="left_wheel_collision">
+       <pose>0 0 0 0 1.57 0</pose>
+        <geometry>
+           <cylinder>
+            <radius>0.02</radius>
+            <length>0.005</length>
+          </cylinder>
+        </geometry>
+      </collision>
+   
+      <visual name="left_wheel_visual">
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://epuck/meshes/left_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>1</self_collide>
+    </link>
+    <joint name="left_joint" type="revolute">
+      <child>left_wheel</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name="right_wheel">
+      <pose>-0.0278 0 0.02 0 -0 0</pose>
+      <inertial>
+        <pose>0.000651 0 0 0 -0 0</pose>
+        <mass>0.005</mass>
+      <inertia>
+          <ixx>8.2274e-07</ixx>
+          <ixy>-1.0753e-22</ixy>
+          <ixz>8.6429e-13</ixz>
+          <iyy>4.2585e-07</iyy>
+          <iyz>2.3307e-22</iyz>
+          <izz>4.2585e-07</izz>
+        </inertia>
+      </inertial>
+      <collision name="left_wheel_collision">
+       <pose>0 0 0 0 1.57 0</pose>
+        <geometry>
+           <cylinder>
+            <radius>0.02</radius>
+            <length>0.005</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="right_wheel_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://epuck/meshes/right_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>1</self_collide>
+    </link>
+    <joint name="right_joint" type="revolute">
+      <child>right_wheel</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+ <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100</updateRate>
+      <leftJoint>left_joint</leftJoint>
+      <rightJoint>right_joint</rightJoint>
+      <wheelSeparation>0.053</wheelSeparation>
+      <wheelDiameter>0.04</wheelDiameter>
+      <torque>50</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+  </model>
+</sdf>

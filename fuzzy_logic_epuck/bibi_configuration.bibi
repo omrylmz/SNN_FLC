@@ -1,0 +1,13 @@
+<ns1:bibi 
+  xmlns:ns1="http://schemas.humanbrainproject.eu/SP10/2014/BIBI" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ns1:brainModel>
+    <ns1:file>flc_nengo.py</ns1:file>
+  </ns1:brainModel>
+  <ns1:bodyModel robotId="epuck">epuck/model.sdf</ns1:bodyModel>
+  <ns1:mode>SynchronousNengoSimulation</ns1:mode>
+  <ns1:transferFunction src="linear_twist.py" xsi:type="ns1:PythonTransferFunction" />
+  <ns1:transferFunction src="distances.py" xsi:type="ns1:PythonTransferFunction" />
+  <ns1:transferFunction src="left_velocity.py" xsi:type="ns1:PythonTransferFunction" />
+  <ns1:transferFunction src="right_velocity.py" xsi:type="ns1:PythonTransferFunction" />
+</ns1:bibi>
